@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30516.212
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puzzle2.0", "Puzzle2.0\Puzzle2.0.csproj", "{A06F102E-2854-4CA6-8E51-84E4E7BE9AA8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF project", "WPF\WPF project.csproj", "{9F23CC45-D6BC-4DB7-B0FA-46B7C53FD014}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DansingLinks", "DL\DansingLinks.csproj", "{C46D0463-53E5-4782-B4F8-50CDC2A933F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{ED945D06-3882-46D8-B1F6-7AB575116B7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,16 +15,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A06F102E-2854-4CA6-8E51-84E4E7BE9AA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A06F102E-2854-4CA6-8E51-84E4E7BE9AA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A06F102E-2854-4CA6-8E51-84E4E7BE9AA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A06F102E-2854-4CA6-8E51-84E4E7BE9AA8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9F23CC45-D6BC-4DB7-B0FA-46B7C53FD014}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{9F23CC45-D6BC-4DB7-B0FA-46B7C53FD014}.Release|Any CPU.ActiveCfg = Release|x86
 		{C46D0463-53E5-4782-B4F8-50CDC2A933F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C46D0463-53E5-4782-B4F8-50CDC2A933F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C46D0463-53E5-4782-B4F8-50CDC2A933F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C46D0463-53E5-4782-B4F8-50CDC2A933F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED945D06-3882-46D8-B1F6-7AB575116B7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED945D06-3882-46D8-B1F6-7AB575116B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED945D06-3882-46D8-B1F6-7AB575116B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED945D06-3882-46D8-B1F6-7AB575116B7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
