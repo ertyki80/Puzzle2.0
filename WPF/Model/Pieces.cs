@@ -24,6 +24,13 @@ namespace WPF.Model
         public IEnumerable<string[]> matrix = new[]{
                             // 7
                             new[]{
+                                    "1 ",
+                                    "11",
+                                    "11",
+                                    "11",
+                                    "11"
+                                },
+                            new[]{
                                     "11",
                                     "1 ",
                                     "11",
@@ -178,7 +185,12 @@ namespace WPF.Model
                                     "1 ",
                                     "1 "
                                 },
-                            
+                            //2
+                            new[]
+                                {
+                                    "1 ",
+                                    "1 "
+                                },
                              //1
                             new[]
                                 {
@@ -218,7 +230,7 @@ namespace WPF.Model
             List<Int32[]> output_indexes = new List<Int32[]>();
             List<Int32[]> output_numbers = new List<Int32[]>();
             Int32 combinations = (Int32)(Math.Pow(2, numbers.Count) - 1);
-            int id = numbers.Count;
+            int id = 0;
             for (int i = 0; i < combinations; i++)
             {
                 List<Int32> subset = new List<Int32>();
@@ -239,12 +251,12 @@ namespace WPF.Model
                 }
                 if (output_indexes.Count == 0 && i == combinations - 1)
                 {
-                    numbers.Add(numbers[id-1]);
+                    numbers.Add(numbers[id]);
                     if (id == 0)
                     {
-                        id = numbers.Count;
+                        id = numbers.Count-1;
                     }
-                    id--;
+                    id++;
                     combinations = (Int32)(Math.Pow(2, numbers.Count) - 1);
                     i = 0;
                     
@@ -279,4 +291,5 @@ namespace WPF.Model
 
 
     }
+
 }

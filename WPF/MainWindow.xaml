@@ -7,13 +7,7 @@
         
         WindowStartupLocation="CenterScreen">
 
-    <Window.Background>
-        <VisualBrush TileMode="Tile" Viewport="0,0,0.2,0.2">
-            <VisualBrush.Visual>
-                <Image Source="Images\Pattern - Apple Wood@2x.png" />
-            </VisualBrush.Visual>
-        </VisualBrush>
-    </Window.Background>
+    
 
     <StackPanel Margin="20,0,20,20" Orientation="Vertical">
         <StackPanel Margin="20,0,0,20" Orientation="Horizontal">

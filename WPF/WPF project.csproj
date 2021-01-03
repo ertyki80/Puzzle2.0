@@ -129,9 +129,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Pattern - Apple Wood%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\DL\DansingLinks.csproj">
       <Project>{c46d0463-53e5-4782-b4f8-50cdc2a933f9}</Project>
       <Name>DansingLinks</Name>

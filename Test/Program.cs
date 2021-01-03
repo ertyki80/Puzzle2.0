@@ -178,17 +178,55 @@ namespace Test
                                 }
         };
 
-        string[] GenerateCubes( int valCubes)
+        string[] GenerateCubes(int valCubes, int lenghtAdded, int dimension)
         {
+            //Форми фігур: lenghtAdded:=1 and valCubes:=2
+            //11
+            //1
+
             List<string> output = new List<string>();
-            for (int i = 0; i < valCubes; i++)
+
+            if (dimension == 2)
             {
-                    output.Add("1 ");
+                for (int i = 0; i < valCubes; i++)
+                {
+                    if (i <= lenghtAdded)
+                    {
+
+                        output.Add("11");
+                    }
+                    else
+                    {
+                        output.Add("1 ");
+                    }
+
+                }
+                return output.ToArray();
+            }
+            else
+            {
+                for (int i = 0; i < valCubes; i++)
+                {
+                    if (i <= lenghtAdded)
+                    {
+
+                        output.Add("111");
+                    }
+                    else
+                    {
+                        output.Add("1  ");
+                    }
+
+                }
+                return output.ToArray();
             }
 
-
-            return output.ToArray();
         }
+
+
+
+
+
         public List<int> GetCountCubes()
         {
             List<int> number = new List<int>();
@@ -286,7 +324,7 @@ namespace Test
         {
             PuzzleGenerator puzzleGenerator = new PuzzleGenerator();
 
-            var output = puzzleGenerator.GetSumEquel(121);
+            var output = puzzleGenerator.GetSumEquel(81);
             foreach (var s in output)
             {
                 foreach (var str in s)
