@@ -84,7 +84,7 @@ namespace DL
         {
             if (data.Equals(default(TData))) throw new ArgumentNullException(nameof(data));
             var root = BuildInternalStructure(data, iterateRows, iterateCols, predicate);
-            return Search(0, new SearchData(root));
+            return Cover(0, new SearchData(root));
         }
 
         public IEnumerable<Solution> Solve<T>(T[,] matrix, int numPrimaryColumns)
@@ -105,7 +105,7 @@ namespace DL
         {
             if (data.Equals(default(TData))) throw new ArgumentNullException(nameof(data));
             var root = BuildInternalStructure(data, iterateRows, iterateCols, DefaultPredicate<TCol>(), numPrimaryColumns);
-            return Search(0, new SearchData(root));
+            return Cover(0, new SearchData(root));
         }
 
         public IEnumerable<Solution> Solve<TData, TRow, TCol>(
@@ -117,7 +117,7 @@ namespace DL
         {
             if (data.Equals(default(TData))) throw new ArgumentNullException(nameof(data));
             var root = BuildInternalStructure(data, iterateRows, iterateCols, predicate, numPrimaryColumns);
-            return Search(0, new SearchData(root));
+            return Cover(0, new SearchData(root));
         }
 
         public event EventHandler Started;
@@ -187,7 +187,7 @@ namespace DL
                 {
                     if (colIndex != numColumns)
                     {
-                        throw new ArgumentException("All rows must contain the same number of columns!", nameof(data));
+                        throw new ArgumentException("All rows must contain the same number of columns", nameof(data));
                     }
                 }
                 else
@@ -206,7 +206,7 @@ namespace DL
             return root.NextColumnObject == root;
         }
 
-        private IEnumerable<Solution> Search(int k, SearchData searchData)
+        private IEnumerable<Solution> Cover(int k, SearchData searchData)
         {
             try
             {
@@ -251,7 +251,7 @@ namespace DL
                     for (var j = r.Right; j != r; j = j.Right)
                         CoverColumn(j.ListHeader);
 
-                    var recursivelyFoundSolutions = Search(k + 1, searchData);
+                    var recursivelyFoundSolutions = Cover(k + 1, searchData);
                     foreach (var solution in recursivelyFoundSolutions) yield return solution;
 
                     for (var j = r.Left; j != r; j = j.Left)

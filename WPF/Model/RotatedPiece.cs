@@ -33,7 +33,7 @@ namespace WPF.Model
             }
         }
 
-        public Square SquareAt(int x, int y)
+        public Coordinate SquareAt(int x, int y)
         {
             switch (Orientation)
             {
@@ -44,7 +44,7 @@ namespace WPF.Model
                     {
                         var square = Piece.SquareAt(Width - x - 1, Height - y - 1);
                         if (square != null)
-                            square = new Square(x, y);
+                            square = new Coordinate(x, y);
                         return square;
                     }
 
@@ -52,7 +52,7 @@ namespace WPF.Model
                     {
                         var square = Piece.SquareAt(Height - y - 1, x);
                         if (square != null)
-                            square = new Square(x, y);
+                            square = new Coordinate(x, y);
                         return square;
                     }
 
@@ -60,7 +60,7 @@ namespace WPF.Model
                     {
                         var square = Piece.SquareAt(y, Width - x - 1);
                         if (square != null)
-                            square = new Square(x, y);
+                            square = new Coordinate(x, y);
                         return square;
                     }
 

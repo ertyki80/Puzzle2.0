@@ -9,9 +9,10 @@ namespace WPF
 {
     internal class Solver
     {
-        private class InternalRow
+
+        private class RowPieces
         {
-            public InternalRow(bool[] matrixRow, PiecePlacement piecePlacement)
+            public RowPieces(bool[] matrixRow, PiecePlacement piecePlacement)
             {
                 MatrixRow = matrixRow;
                 PiecePlacement = piecePlacement;
@@ -23,7 +24,7 @@ namespace WPF
 
         private readonly Piece[] _pieces;
         private readonly Board _board;
-        private readonly IList<InternalRow> _data = new List<InternalRow>();
+        private readonly IList<RowPieces> _data = new List<RowPieces>();
         private readonly CancellationTokenSource _cancellationTokenSource;
         private readonly DL.DL _dlx;
         private Thread _thread;
@@ -54,7 +55,7 @@ namespace WPF
         private void SolveOnBackgroundThread()
         {
             Thread.CurrentThread.Name = "DL";
-            BuildMatrixAndDictionary();
+            BuildBoard();
             _dlx.SearchStep += (_, e) => SearchSteps.Enqueue(new SearchStep(e.RowIndexes.Select(rowIndex => _data[rowIndex].PiecePlacement)));
             try
             {
@@ -66,23 +67,23 @@ namespace WPF
 
         public Solution FirstSolution { get; private set; }
 
-        private void BuildMatrixAndDictionary()
+        private void BuildBoard()
         {
             for (var pieceIndex = 0; pieceIndex < _pieces.Length; pieceIndex++)
             {
                 var piece = _pieces[pieceIndex];
-                AddDataItemsForPieceWithSpecificOrientation(pieceIndex, piece, Orientation.North);
+                AddPiece(pieceIndex, piece, Orientation.North);
                 var isFirstPiece = (pieceIndex == 0);
                 if (!isFirstPiece)
                 {
-                    AddDataItemsForPieceWithSpecificOrientation(pieceIndex, piece, Orientation.South);
-                    AddDataItemsForPieceWithSpecificOrientation(pieceIndex, piece, Orientation.East);
-                    AddDataItemsForPieceWithSpecificOrientation(pieceIndex, piece, Orientation.West);
+                    AddPiece(pieceIndex, piece, Orientation.South);
+                    AddPiece(pieceIndex, piece, Orientation.East);
+                    AddPiece(pieceIndex, piece, Orientation.West);
                 }
             }
         }
 
-        private void AddDataItemsForPieceWithSpecificOrientation(int pieceIndex, Piece piece, Orientation orientation)
+        private void AddPiece(int pieceIndex, Piece piece, Orientation orientation)
         {
             var rotatedPiece = new RotatedPiece(piece, orientation);
 
@@ -98,7 +99,7 @@ namespace WPF
             }
         }
 
-        private InternalRow BuildDataItem(int pieceIndex, RotatedPiece rotatedPiece, Coords coords)
+        private RowPieces BuildDataItem(int pieceIndex, RotatedPiece rotatedPiece, Coords coords)
         {
             var numColumns = _pieces.Length + _board.BoardSize * _board.BoardSize;
             var matrixRow = new bool[numColumns];
@@ -120,7 +121,7 @@ namespace WPF
                 }
             }
 
-            return new InternalRow(matrixRow, new PiecePlacement(rotatedPiece, coords));
+            return new RowPieces(matrixRow, new PiecePlacement(rotatedPiece, coords));
         }
     }
 }

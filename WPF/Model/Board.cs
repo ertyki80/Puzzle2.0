@@ -7,7 +7,7 @@ namespace WPF.Model
         private class PieceHolder
         {
             public RotatedPiece RotatedPiece { get; set; } 
-            public Square Square { get; set; }
+            public Coordinate Square { get; set; }
         }
 
         private readonly PieceHolder[,] _pieces;
@@ -41,7 +41,7 @@ namespace WPF.Model
 
           
 
-            Square firstSquare = null;
+            Coordinate firstSquare = null;
 
             for (var pieceX = 0; pieceX < rotatedPiece.Width; pieceX++) {
                 for (var pieceY = 0; pieceY < rotatedPiece.Height; pieceY++) {
@@ -105,7 +105,7 @@ namespace WPF.Model
             return (pieceHolder != null) ? pieceHolder.RotatedPiece.Piece : null;
         }
 
-        public Square SquareAt(int x, int y)
+        public Coordinate SquareAt(int x, int y)
         {
             PieceHolder pieceHolder = PieceHolderAt(x, y);
             return (pieceHolder != null) ? pieceHolder.Square : null;

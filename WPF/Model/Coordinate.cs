@@ -1,8 +1,8 @@
 namespace WPF.Model
 {
-    public class Square
+    public class Coordinate
     {
-        public Square(int x, int y)
+        public Coordinate(int x, int y)
         {
             X = x;
             Y = y;
